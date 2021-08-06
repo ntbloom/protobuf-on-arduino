@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+message DataPacket {
+  string description = 1;
+  
+  enum PacketType {
+    TEMPERATURE = 0;
+  }
+
+  PacketType packetType = 2;
+  int32 value = 3;
+}
+
+message EventPacket {
+  string description = 1;
+
+  enum PacketType {
+    TIPPER_CLICK = 0;
+    SOFT_RESET = 1;
+    HARD_RESET = 2;
+    START_PAUSE = 3;
+    STOP_PAUSE = 4;
+  }
+  PacketType packetType = 2;
+}
