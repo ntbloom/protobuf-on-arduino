@@ -176,7 +176,7 @@ DataPacket::DataPacket(const DataPacket& from)
   // @@protoc_insertion_point(copy_constructor:DataPacket)
 }
 
-inline void DataPacket::SharedCtor() {
+void DataPacket::SharedCtor() {
 description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&packettype_) - reinterpret_cast<char*>(this)),
@@ -437,7 +437,7 @@ EventPacket::EventPacket(const EventPacket& from)
   // @@protoc_insertion_point(copy_constructor:EventPacket)
 }
 
-inline void EventPacket::SharedCtor() {
+void EventPacket::SharedCtor() {
 description_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 packettype_ = 0;
 }

@@ -1,3 +1,5 @@
+#include </home/ntbloom/docs/programs/learnprotobuf/src/raincounter.pb.h>
+
 void setup() {
   Serial.begin(9600);
 }

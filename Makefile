@@ -28,11 +28,13 @@ HOMEDIR = /home/ntbloom/docs/programs/learnprotobuf
 SCHEMAS = $(HOMEDIR)/schemas
 SRC 		= $(HOMEDIR)/src
 
+BUILD_FLAGS = --build-property "build.ld_flags=-L/usr/local/lib/"
+
 protobuf:
 	protoc -I=$(SCHEMAS) --cpp_out=$(SRC) $(SCHEMAS)/raincounter.proto
 
 build: 
-	$(CLI) compile --fqbn $(FQBN) $(INO) $(WARN)
+	$(CLI) compile $(BUILD_FLAGS) --fqbn $(FQBN) $(INO) $(WARN)
 
 upload:
 	$(CLI) upload -p $(PORT) --fqbn $(FQBN) $(INO) 
