@@ -24,17 +24,28 @@ INO  = learnprotobuf.ino
 WARN = --warnings all
 BINDIR = bin
 
-HOMEDIR = /home/ntbloom/docs/programs/learnprotobuf
+HOMEDIR = $(HOME)/docs/programs/learnprotobuf
 SCHEMAS = $(HOMEDIR)/schemas
 SRC 		= $(HOMEDIR)/src
 
-BUILD_FLAGS = --build-property "build.ld_flags=-L/usr/local/lib/"
+# arduino-cli
+CLIFLAGS  = --libraries $(HOMEDIR)/nanopb
+CLIFLAGS += --libraries $(HOMEDIR)/src
+#CLIFLAGS += -v
+
+# protobuf
+NANOPB  		 = $(HOMEDIR)/nanopb/generator/nanopb_generator.py 
+PROTOC			 =  poetry run python $(NANOPB)
+PBFLAGS  		 = -I $(SCHEMAS)
+PBFLAGS 		+= --output-dir=$(HOMEDIR)/src
+PBFLAGS 		+= --timestamp
+PBFLAGS 		+= --no-strip-path
 
 protobuf:
-	protoc -I=$(SCHEMAS) --cpp_out=$(SRC) $(SCHEMAS)/raincounter.proto
+	$(PROTOC) $(PBFLAGS) $(SCHEMAS)/raincounter.proto
 
-build: 
-	$(CLI) compile $(BUILD_FLAGS) --fqbn $(FQBN) $(INO) $(WARN)
+build: protobuf
+	$(CLI) compile $(CLIFLAGS) --fqbn $(FQBN) $(INO) $(WARN)
 
 upload:
 	$(CLI) upload -p $(PORT) --fqbn $(FQBN) $(INO) 
