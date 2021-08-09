@@ -56,4 +56,5 @@ clean:
 
 all: build upload
 
-
+listen:
+	cat $(PORT)
