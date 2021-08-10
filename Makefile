@@ -34,15 +34,23 @@ CLIFLAGS += --libraries $(HOMEDIR)/src
 #CLIFLAGS += -v
 
 # protobuf
+#c++
 NANOPB  		 = $(HOMEDIR)/nanopb/generator/nanopb_generator.py 
-PROTOC			 =  poetry run python $(NANOPB)
+NANOPROTOC	 =  poetry run python $(NANOPB)
 PBFLAGS  		 = -I $(SCHEMAS)
 PBFLAGS 		+= --output-dir=$(HOMEDIR)/src
-PBFLAGS 		+= --timestamp
+#PBFLAGS 		+= --timestamp
 PBFLAGS 		+= --no-strip-path
+#python
+PROTOC 			 = protoc
+PYTHONDIR		 = $(HOMEDIR)/python
+PROTOCFLAGS  = --python_out=$(PYTHONDIR)
+PROTOCFLAGS += -I $(SCHEMAS)
+
 
 protobuf:
-	$(PROTOC) $(PBFLAGS) $(SCHEMAS)/raincounter.proto
+	$(NANOPROTOC) $(PBFLAGS) $(SCHEMAS)/raincounter.proto
+	$(PROTOC) $(PROTOCFLAGS) $(SCHEMAS)/raincounter.proto
 
 build: protobuf
 	$(CLI) compile $(CLIFLAGS) --fqbn $(FQBN) $(INO) $(WARN)
