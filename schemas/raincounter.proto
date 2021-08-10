@@ -2,7 +2,8 @@ syntax = "proto3";
 
 message DataPacket {
   enum PacketType {
-    TEMPERATURE = 0;
+    TEMPERATURE_C = 0;
+    TEMPERATURE_F = 1;
   }
 
   PacketType packetType = 1;

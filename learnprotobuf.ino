@@ -7,7 +7,7 @@ static DataPacket packet;
 
 void setup() {
     Serial.begin(9600);
-    packet.packetType = DataPacket_PacketType_TEMPERATURE;
+    packet.packetType = DataPacket_PacketType_TEMPERATURE_F;
     packet.value = 72;
     stream = pb_ostream_from_buffer(buffer, sizeof(buffer));
     pb_encode(&stream, DataPacket_fields, &packet);
@@ -16,7 +16,7 @@ void setup() {
 void loop() {
     for (uint i = 0; i < stream.bytes_written; i++) {
         Serial.print(buffer[i], HEX);
-        Serial.print(";");
+        Serial.print(" ");
     }
     Serial.println();
     delay(1000);

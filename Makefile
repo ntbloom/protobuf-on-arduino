@@ -41,12 +41,16 @@ PBFLAGS  		 = -I $(SCHEMAS)
 PBFLAGS 		+= --output-dir=$(HOMEDIR)/src
 #PBFLAGS 		+= --timestamp
 PBFLAGS 		+= --no-strip-path
+
 #python
 PROTOC 			 = protoc
 PYTHONDIR		 = $(HOMEDIR)/python
 PROTOCFLAGS  = --python_out=$(PYTHONDIR)
 PROTOCFLAGS += -I $(SCHEMAS)
 
+PYSCRIPT 	   = $(HOMEDIR)/python/counter.py
+
+.PHONY: python
 
 protobuf:
 	$(NANOPROTOC) $(PBFLAGS) $(SCHEMAS)/raincounter.proto
@@ -66,3 +70,6 @@ all: build upload
 
 listen:
 	cat $(PORT)
+
+python:
+	poetry run python3 $(PYSCRIPT)

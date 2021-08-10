@@ -11,7 +11,8 @@
 
 /* Enum definitions */
 typedef enum _DataPacket_PacketType { 
-    DataPacket_PacketType_TEMPERATURE = 0 
+    DataPacket_PacketType_TEMPERATURE_C = 0, 
+    DataPacket_PacketType_TEMPERATURE_F = 1 
 } DataPacket_PacketType;
 
 typedef enum _EventPacket_PacketType { 
@@ -34,9 +35,9 @@ typedef struct _EventPacket {
 
 
 /* Helper constants for enums */
-#define _DataPacket_PacketType_MIN DataPacket_PacketType_TEMPERATURE
-#define _DataPacket_PacketType_MAX DataPacket_PacketType_TEMPERATURE
-#define _DataPacket_PacketType_ARRAYSIZE ((DataPacket_PacketType)(DataPacket_PacketType_TEMPERATURE+1))
+#define _DataPacket_PacketType_MIN DataPacket_PacketType_TEMPERATURE_C
+#define _DataPacket_PacketType_MAX DataPacket_PacketType_TEMPERATURE_F
+#define _DataPacket_PacketType_ARRAYSIZE ((DataPacket_PacketType)(DataPacket_PacketType_TEMPERATURE_F+1))
 
 #define _EventPacket_PacketType_MIN EventPacket_PacketType_TIPPER_CLICK
 #define _EventPacket_PacketType_MAX EventPacket_PacketType_STOP_PAUSE

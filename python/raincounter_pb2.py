@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11raincounter.proto\"f\n\nDataPacket\x12*\n\npacketType\x18\x01 \x01(\x0e\x32\x16.DataPacket.PacketType\x12\r\n\x05value\x18\x02 \x01(\x05\"\x1d\n\nPacketType\x12\x0f\n\x0bTEMPERATURE\x10\x00\"\x9b\x01\n\x0b\x45ventPacket\x12+\n\npacketType\x18\x01 \x01(\x0e\x32\x17.EventPacket.PacketType\"_\n\nPacketType\x12\x10\n\x0cTIPPER_CLICK\x10\x00\x12\x0e\n\nSOFT_RESET\x10\x01\x12\x0e\n\nHARD_RESET\x10\x02\x12\x0f\n\x0bSTART_PAUSE\x10\x03\x12\x0e\n\nSTOP_PAUSE\x10\x04\x62\x06proto3'
+  serialized_pb=b'\n\x11raincounter.proto\"{\n\nDataPacket\x12*\n\npacketType\x18\x01 \x01(\x0e\x32\x16.DataPacket.PacketType\x12\r\n\x05value\x18\x02 \x01(\x05\"2\n\nPacketType\x12\x11\n\rTEMPERATURE_C\x10\x00\x12\x11\n\rTEMPERATURE_F\x10\x01\"\x9b\x01\n\x0b\x45ventPacket\x12+\n\npacketType\x18\x01 \x01(\x0e\x32\x17.EventPacket.PacketType\"_\n\nPacketType\x12\x10\n\x0cTIPPER_CLICK\x10\x00\x12\x0e\n\nSOFT_RESET\x10\x01\x12\x0e\n\nHARD_RESET\x10\x02\x12\x0f\n\x0bSTART_PAUSE\x10\x03\x12\x0e\n\nSTOP_PAUSE\x10\x04\x62\x06proto3'
 )
 
 
@@ -32,7 +32,12 @@ _DATAPACKET_PACKETTYPE = _descriptor.EnumDescriptor(
   create_key=_descriptor._internal_create_key,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='TEMPERATURE', index=0, number=0,
+      name='TEMPERATURE_C', index=0, number=0,
+      serialized_options=None,
+      type=None,
+      create_key=_descriptor._internal_create_key),
+    _descriptor.EnumValueDescriptor(
+      name='TEMPERATURE_F', index=1, number=1,
       serialized_options=None,
       type=None,
       create_key=_descriptor._internal_create_key),
@@ -40,7 +45,7 @@ _DATAPACKET_PACKETTYPE = _descriptor.EnumDescriptor(
   containing_type=None,
   serialized_options=None,
   serialized_start=94,
-  serialized_end=123,
+  serialized_end=144,
 )
 _sym_db.RegisterEnumDescriptor(_DATAPACKET_PACKETTYPE)
 
@@ -79,8 +84,8 @@ _EVENTPACKET_PACKETTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=186,
-  serialized_end=281,
+  serialized_start=207,
+  serialized_end=302,
 )
 _sym_db.RegisterEnumDescriptor(_EVENTPACKET_PACKETTYPE)
 
@@ -121,7 +126,7 @@ _DATAPACKET = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=21,
-  serialized_end=123,
+  serialized_end=144,
 )
 
 
@@ -153,8 +158,8 @@ _EVENTPACKET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=126,
-  serialized_end=281,
+  serialized_start=147,
+  serialized_end=302,
 )
 
 _DATAPACKET.fields_by_name['packetType'].enum_type = _DATAPACKET_PACKETTYPE
