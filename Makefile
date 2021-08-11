@@ -66,10 +66,13 @@ clean:
 	$(CLI) cache clean
 	rm $(BINDIR)/*.out
 
-all: build upload
-
 listen:
 	cat $(PORT)
 
-python:
+wait:
+	sleep 2
+
+python: 
 	poetry run python3 $(PYSCRIPT)
+
+all: build upload wait python
