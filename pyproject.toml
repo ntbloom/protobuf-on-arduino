@@ -8,6 +8,7 @@ authors = ["ntbloom <ntbloom@gmail.com>"]
 python = "^3.9"
 protobuf = "^3.17.3"
 pyserial = "^3.5"
+black = "^21.7b0"
 
 [tool.poetry.dev-dependencies]
 
