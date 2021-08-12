@@ -1,4 +1,4 @@
-from raincounter_pb2 import DataPacket, _message
+from raincounter_pb2 import DataPacket
 import serial
 
 
